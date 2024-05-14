@@ -27,7 +27,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
        if ($stmt->rowCount() == 1) {
 
         $_SESSION['username'] = $username;
-
         header("Location: home.php");
         exit();
 
