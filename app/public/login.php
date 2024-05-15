@@ -1,8 +1,8 @@
 <?php
-/* Startar en session: */
-session_start();
 
-require_once("db_connection.php");
+
+// Inkluderar filen db_connection.php
+require("db_connection.php");
 
 // Checkar om det är en post metod: 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
     $password = $_POST["password"];
 
-    
+
 
     try {
 
@@ -26,14 +26,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
        if ($stmt->rowCount() == 1) {
 
-        $_SESSION['username'] = $username;
+       //Skickar användaren till home.php:
         header("Location: home.php");
         exit();
 
        } else {
-
-        echo "Invalid username or password!";
-       }
+        
+        //Medelande för fel användarnamn eller lösenord:
+        echo "<div class='error-message'>Invalid username or password!</div>";
+       }    
 
     } catch(PDOException $e) {
 
@@ -41,3 +42,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
 }
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style/login-error.css">
+</head>
+<body>
+
+<a href="index.html">Try again</a>
+<a href="">Create an account</a>
+
+
+</body>
+</html>

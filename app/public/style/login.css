@@ -25,12 +25,16 @@ font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     cursor: pointer;
     margin-left: 10%;
     margin-right: 10%;
+    transition: 0.3s;
 }
 
 .submit-btn:hover{
     background-color: rgb(90, 223, 106);
     transition: 0.3s;
+
 }
+
+
 
 h1 {
     text-align: center;
@@ -51,3 +55,6 @@ body {
     background-color:  #1b1b1b;
 }
 
+.create-account-btn{
+    text-align: center;
+}
