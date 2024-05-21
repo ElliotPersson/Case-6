@@ -37,6 +37,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
+} else {
+    echo "Invalid request method!";
 }
 ?>
 <!DOCTYPE html>

@@ -9,13 +9,13 @@
 <body>
     <h1>Welcome</h1>
 
-    <a href="create_business.html">Create businesses</a><br>
+    <a href="business_form.php">Create businesses</a><br>
     <a href="">View businesses</a>
 
     <?php
 
 
+    ?>
 
-?>
 </body>
 </html>

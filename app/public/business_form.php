@@ -29,6 +29,28 @@
         <!-- kategori: -->
         <label for="category">Category:</label>
         <select id="category" name="category" required>
+            
+            <?php 
+            require("db_connection.php");
+            $sql = "SELECT * FROM category";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
+            $categories = $stmt->fetchAll();
+            foreach($categories as $category) {
+                
+                echo 
+                "<option value=\"{$category['id']}\">{$category['category_name']}</option>";
+
+                
+            }
+            ?>
+        </select>
+
+        <button type="submit">Create</button>
+
+
     </form>
 </body>
+
 </html>
+
