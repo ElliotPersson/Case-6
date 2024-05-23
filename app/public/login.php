@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
            
             $password_match = password_verify($password, $user['user_password']);
             if (!$password_match) {
-                echo "Password doesn't match";
+                echo "Password doesn't match!";
                 exit;
             }
 

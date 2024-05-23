@@ -10,7 +10,8 @@
     <h1>Welcome</h1>
 
     <a href="business_form.php">Create businesses</a><br>
-    <a href="">View businesses</a>
+    <a href="view_business.php">View businesses</a>
+    <a href="index.html">logout</a>
 
     <?php
 
