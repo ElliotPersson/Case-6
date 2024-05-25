@@ -56,7 +56,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             ':category_id' => $category_id
         ]);
 
-        echo "Business created successfully!";
+        echo "<h1>Business created successfully!</h1>";
+        echo "<a href='view_business.php'>View all businesses here</a>";
     } else {
         echo "There was an error uploading the file.";
     }
@@ -65,4 +66,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     echo "Invalid request method!";
 
 }
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business created</title>
+    <link rel="stylesheet" href="style/create-business.css">
+</head>
+<body>
+    
+</body>
+</html>
 

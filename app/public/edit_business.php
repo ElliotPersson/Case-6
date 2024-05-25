@@ -1,4 +1,12 @@
 <?php 
+session_start();
+
+if(!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+    
+}
+
 
 require("db_connection.php");
 
@@ -90,22 +98,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/edit-business.css">
     <title>Edit Business</title>
 </head>
 <body>
     <h1>Edit Business</h1>
     <form action="" method="post" enctype="multipart/form-data">
         <label for="name">Business Name:</label>
-        <input type="text" id="name" name="name" value="<?= htmlspecialchars($business['name']) ?>" required><br>
+        <input type="text" id="name" name="name" class="input-text" value="<?= htmlspecialchars($business['name']) ?>" required>
 
         <label for="address">Address:</label>
-        <input type="text" id="address" name="address" value="<?= htmlspecialchars($business['address']) ?>" required><br>
+        <input type="text" id="address" name="address"  class="input-text" value="<?= htmlspecialchars($business['address']) ?>" required>
 
         <label for="open_hours">Open Hours:</label>
-        <input type="text" id="open_hours" name="open_hours" value="<?= htmlspecialchars($business['open_hours']) ?>" required><br>
+        <input type="text" id="open_hours" name="open_hours" class="input-text" value="<?= htmlspecialchars($business['open_hours']) ?>" required>
 
         <label for="image">Image:</label>
-        <input type="file" id="image" name="image" accept="image/*"><br>
+        <input type="file" id="image" name="image" accept="image/*" class="input-file"> 
 
         <label for="category">Category:</label>
         <select id="category" name="category" required>
@@ -120,9 +129,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 echo "<option value=\"{$category['id']}\" $selected>{$category['category_name']}</option>";
             }
             ?>
-        </select><br>
+        </select>
 
-        <button type="submit">Update</button>
+        <button type="submit" class="update-button">Update</button>
     </form>
 </body>
 </html>

@@ -1,10 +1,22 @@
+<?php
+session_start();
+if(!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit();
+    
+}
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style/business.css">
+    <link rel="stylesheet" href="style/view-business.css">
+    <script src="confirmDelete.js"></script>
 </head>
 <body>
     <h1>List of businesses:</h1>
@@ -21,13 +33,13 @@
     foreach($businesses as $business) {
         echo "<div class = 'business'>";
 
-        echo "<img src='{$business['image_url']}' alt='{$business['name']}'><br>";
-        echo "<strong>Name:</strong> {$business['name']}<br>";
-        echo "<strong>Address:</strong> {$business['address']}<br>";
-        echo "<strong>Open Hours:</strong> {$business['open_hours']}<br>";
+        echo "<img src='{$business['image_url']}' alt='{$business['name']}'>";
+        echo "<strong>Name:</strong> {$business['name']}";
+        echo "<strong>Address:</strong> {$business['address']}";
+        echo "<strong>Open Hours:</strong> {$business['open_hours']}";
         echo "<strong>Category:</strong> {$business['category_name']}";
 
-        echo "<form action='delete_business.php' method='post'>";
+        echo "<form action='delete_business.php' method='post' onsubmit='return confirmDelete()'>";
         echo "<input type='hidden' name='business_id' value='{$business['id']}'> ";
         echo "<button type='submit'>Delete</button>";
         echo "</form>";
