@@ -1,4 +1,4 @@
-<?
+<?php
 
 require "db_connection.php";
 
@@ -8,4 +8,4 @@ $sql= "CREATE TABLE IF NOT EXISTS `user` (
     `user_password` VARCHAR(255) COLLATE utf8mb4_general_ci DEFAULT NULL
   );";
 
-$pdo->exec($sql);
+$conn->exec($sql);
