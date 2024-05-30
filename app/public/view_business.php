@@ -1,9 +1,8 @@
 <?php
 session_start();
-if(!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
-    
 }
 
 
@@ -11,6 +10,7 @@ if(!isset($_SESSION['user_id'])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,6 +18,7 @@ if(!isset($_SESSION['user_id'])) {
     <link rel="stylesheet" href="style/view-business.css">
     <script src="confirmDelete.js"></script>
 </head>
+
 <body>
     <h1>List of businesses:</h1>
     <?php
@@ -30,9 +31,9 @@ if(!isset($_SESSION['user_id'])) {
 
     $stmt = $conn->prepare($sql);
     $stmt->execute();
-    $businesses =$stmt->fetchAll();
+    $businesses = $stmt->fetchAll();
 
-    foreach($businesses as $business) {
+    foreach ($businesses as $business) {
         echo "<div class = 'business'>";
 
         echo "<img src='{$business['image_url']}' alt='{$business['name']}'>";
@@ -47,17 +48,17 @@ if(!isset($_SESSION['user_id'])) {
             echo "<input type='hidden' name='business_id' value='{$business['id']}'> ";
             echo "<button type='submit'>Delete</button>";
             echo "</form>";
-    
-            
-            echo "<a href='edit_business.php?id={$business['id']}'>Edit</a>";   
+
+
+            echo "<a href='edit_business.php?id={$business['id']}'>Edit</a>";
         }
 
-       
+
 
         echo "</div>";
-
     }
     ?>
-    
+
 </body>
+
 </html>

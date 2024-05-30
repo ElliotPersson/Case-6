@@ -30,7 +30,7 @@ foreach ($categories as $category) {
                             )");
     $stmt->execute(['category_name' => $category]);
 }
-
+/* Lägger till business tabellen om den inte redan finns: */
 $sql = "CREATE TABLE IF NOT EXISTS `business` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `name` VARCHAR(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
@@ -44,3 +44,6 @@ $sql = "CREATE TABLE IF NOT EXISTS `business` (
     FOREIGN KEY (`category_id`) REFERENCES `category`(`id`)
 )";
 $conn->exec($sql);
+
+/* Skickar användaren tillbaka till index.html */
+header("Location: index.html");

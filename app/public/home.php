@@ -1,4 +1,5 @@
 <?php
+/* Kollar om användaren har loggat in: */
 session_start();
 if(!isset($_SESSION['user_id'])) {
     header("Location: login.php");
@@ -18,8 +19,10 @@ if(!isset($_SESSION['user_id'])) {
 <div class="container">
      
     <h1 class="title">Welcome</h1>
+    <!-- Skriver ut namnet på den som är inloggad med session variablen: -->
     <h1 class="title-2"> <?php echo htmlspecialchars($_SESSION['username']); ?>!</h1>
-    <nav class="nav">
+    <nav class="nav">   
+        <!-- Länkar till att skapa, visa en business och logga ut: -->
         <a href="business_form.php" class="nav-link">Create businesses</a><br>
         <a href="view_business.php" class="nav-link-view">View businesses</a>
         <a href="logout.php" class="nav-link">Logout</a>

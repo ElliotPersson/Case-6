@@ -3,7 +3,7 @@
 /* Startar en session: */
 session_start();
 
-/* Inkluderar db_connection.php som innehåller logiken för databas uppkoppling: */
+/* Inkluderar db_connection.php som innehåller databas uppkopplingen: */
 require("db_connection.php");
 
 /* Kollar om det är en post metod: */
@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
             if ($password_match) {
 
-                /* Lägger användarens id och användarnamn i variabler: */
+                /* Lägger användarens id och användarnamn i session variabler: */
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['username'] = $user['user_name'];
 
@@ -46,16 +46,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "Wrong password!";
                 exit;
             }
+           
         } else {
+             /* Fel medelande om användaren inte finns i databasen: */
             echo "<div class='error-message'>That user doesnt exist!</div>";
         }
+        /* Annat fel: */
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
 } else {
+    /* Fel medelande om det inte är en post metod: */
     echo "<h1>Invalid request method!</h1>";
 }
 ?>
+<!-- html: -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
